@@ -10,13 +10,14 @@ namespace Terminal {
         public Omnibus(int pasajeros) : base(pasajeros) {
 
         }
-        public override void Avanzar() {
+        public override string Avanzar() {
 
-            Console.WriteLine($"Arranca el bondi con {pasajeros} pasajeros");
+            return $"Arranca el bondi con {pasajeros} pasajeros";
+
         }
-        public override void Detenerse() {
+        public override string Detenerse() {
 
-            Console.WriteLine($"frena el bondi con {pasajeros} pasajeros");
+            return $"frena el bondi con {pasajeros} pasajeros";
         }
     }
 }

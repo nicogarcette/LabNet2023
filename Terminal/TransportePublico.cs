@@ -14,7 +14,7 @@ namespace Terminal {
             this.pasajeros = pasajeros;
         }
 
-        public abstract void Avanzar();
-        public abstract void Detenerse();
+        public abstract string Avanzar();
+        public abstract string Detenerse();
     }
 }

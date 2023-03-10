@@ -15,42 +15,31 @@ namespace Terminal {
             List<TransportePublico> transportePublicos = new List<TransportePublico>();
 
             bool entrar = false;
-
-            int total = 0, countT = 0, countB = 0; 
+            int  countT = 0, countB = 0; 
 
             while (!entrar) {
 
-                int opc = validarOpc();
+                int opc = ValidarOpc();
 
                 if (opc == 1 && countT < 5) {
                     countT++;
-                    total++;
-                    addTaxi(ref transportePublicos);
-                    mensaje("Taxi",countT);
+                    AddTaxi(ref transportePublicos);
+                    Mensaje("Taxi", countT);
 
                 } else if (opc == 2 && countB < 5) {
                     countB++;
-                    total++;
-                    addOmnibus(ref transportePublicos);
-                    mensaje("Bondi", countB);
+                    AddOmnibus(ref transportePublicos);
+                    Mensaje("Bondi", countB);
                 }
 
-                if (total == 10) {
-                    entrar = true;
-                }
+                if (countB == 5 && countT == 5) entrar = true;
             }
 
-            foreach (var transporte in transportePublicos) {
-                transporte.Avanzar();
-            }
-            Console.WriteLine("\n....accidente en mitre y josePerez\n");
-            foreach (var transporte in transportePublicos) {
-                transporte.Detenerse();
-            }
+            TransporteFuncionando(ref transportePublicos);
 
             Console.ReadKey();
         }
-        public static int controlException() {
+        public static int ControlException() {
             int opc = 0;
 
             try {
@@ -63,14 +52,14 @@ namespace Terminal {
 
             return opc;
         }
-        public static int validarOpc() {
+        public static int ValidarOpc() {
             int opc = 0;
             bool valido = false;
 
             while (!valido) {
                 Console.WriteLine("\n1-ingresar taxi\n2-ingresar bondi\n");
 
-                opc = controlException();
+                opc = ControlException();
 
                 if (opc > 0 && opc < 3) {
                     valido = true;
@@ -80,51 +69,49 @@ namespace Terminal {
             }
             return opc;
         }
-        public static int validarPasajerosOmnibus() {
+        public static int ValidarPasajero(int limite) {
             bool entrar = false;
             int pasajero = 0;
-
             while (!entrar) {
-                pasajero = controlException();
+                pasajero = ControlException();
 
-                if (pasajero > 0 && pasajero < 101) {
+                if (pasajero > 0 && pasajero <= limite) {
                     entrar = true;
                 } else {
-                    Console.Write("Limite de pasajeros(100): ");
+                    Console.Write($"Limite de pasajeros({limite}): ");
                 }
             }
             return pasajero;
         }
-        public static int validarPasajerosTaxi() {
-            bool entrar = false;
-            int pasajero = 0;
-            while (!entrar) {
-                pasajero = controlException();
-
-                if (pasajero > 0 && pasajero < 5) {
-                    entrar = true;
-                } else {
-                    Console.Write("Limite de pasajeros(4): ");
-                }
-            }
-            return pasajero;
-
-        }
-        public static void addOmnibus(ref List<TransportePublico> lista) {
+        public static void AddOmnibus(ref List<TransportePublico> lista) {
 
             Console.Write("Ingrese pasajeros:");
-            int pasajeros = validarPasajerosOmnibus();
+            int pasajeros = ValidarPasajero(100);
             lista.Add(new Omnibus(pasajeros));
         }
-        public static void addTaxi(ref List<TransportePublico> lista) {
+        public static void AddTaxi(ref List<TransportePublico> lista) {
 
             Console.Write("Ingrese pasajeros:");
-            int pasajeros = validarPasajerosTaxi();
+            int pasajeros = ValidarPasajero(4);
             lista.Add(new Taxi(pasajeros));
         }
-        public static void mensaje(string m,int cont) { 
+        public static void Mensaje(string m,int cont) { 
             string msj = cont == 5 ? $"5 {m} ingresados.No podra ingresar mas!" : $"Ingreso de {m} exitoso!";
             Console.WriteLine(msj);
+        }
+        public static void TransporteFuncionando(ref List<TransportePublico> transportes) {
+
+            foreach (var transporte in transportes) {
+
+                Console.WriteLine(transporte.Avanzar());
+            }
+
+            Console.WriteLine("\n....accidente en mitre y josePerez\n");
+
+            foreach (var transporte in transportes) {
+                Console.WriteLine(transporte.Detenerse());
+            }
+
         }
     }
 }

@@ -11,13 +11,12 @@ namespace Terminal {
 
         }
 
-        public override void Avanzar() {
-
-            Console.WriteLine($"Arranca el taxi con {pasajeros} pasajeros");
+        public override string Avanzar() {
+            return $"Arranca el taxi con {pasajeros} pasajeros";
         }
-        public override void Detenerse() {
-
-            Console.WriteLine($"frena el taxi con {pasajeros} pasajeros");
+        public override string Detenerse() {
+            
+            return $"frena el taxi con {pasajeros} pasajeros";
         }
     }
 }
