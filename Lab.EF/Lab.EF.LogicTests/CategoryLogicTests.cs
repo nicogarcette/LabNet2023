@@ -37,9 +37,7 @@ namespace Lab.EF.Logic.Tests {
         }
 
         [TestMethod()]
-        public void test() {
-
-            Categories category = new Categories { CategoryName = "Indumentaria" };
+        public void InsertTest() {
 
             var mockSet = new Mock<DbSet<Categories>>();
             var mockContext = new Mock<NorthwindContext>();
