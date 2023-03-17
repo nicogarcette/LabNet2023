@@ -18,8 +18,6 @@ namespace Lab.LINQ.Logic {
         public List<Products> NoStock() {
 
             List<Products> noStock = _context.Products.Where(p => p.UnitsInStock == 0).ToList();
-            if (noStock.Any() == false) {
-            }
             return noStock;
         }
      

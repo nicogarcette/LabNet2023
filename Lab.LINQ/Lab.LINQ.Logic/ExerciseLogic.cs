@@ -27,7 +27,6 @@ namespace Lab.LINQ.Logic {
         public string ProductsNoStock() {
 
             ProductLogic productLogic = new ProductLogic();
-
             List<Products> sinStock = productLogic.NoStock();
 
             string products = string.Empty;
