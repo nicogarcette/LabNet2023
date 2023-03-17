@@ -62,6 +62,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lab.LINQ.Common\Lab.LINQ.Common.csproj">
+      <Project>{7857c667-6a68-4a02-90b8-a4654bece210}</Project>
+      <Name>Lab.LINQ.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lab.LINQ.Data\Lab.LINQ.Data.csproj">
       <Project>{2D71F5DC-4F3D-40F2-B0DC-2126084192DF}</Project>
       <Name>Lab.LINQ.Data</Name>

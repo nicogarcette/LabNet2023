@@ -1,10 +1,12 @@
-﻿using Lab.LINQ.Entities;
+﻿using Lab.LINQ.Common;
+using Lab.LINQ.Entities;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace Lab.LINQ.Logic {
     public class ExerciseLogic {
@@ -16,9 +18,9 @@ namespace Lab.LINQ.Logic {
                 Customers customer = customerLogic.GetOne();
                 return $"Id: {customer.CustomerID} Nombre: {customer.ContactName}";
 
-            } catch (ArgumentNullException) {
+            } catch (NoRegisterException ex) {
 
-                return "no existe registros en la tabla";
+                return ex.Message;
             }
         }
     
@@ -73,9 +75,9 @@ namespace Lab.LINQ.Logic {
                 Products product = productLogic.SpecificID();
                 return $"{product.ProductID} {product.ProductName}";
 
-            } catch (ArgumentNullException) {
+            } catch (NoRegisterException ex) {
 
-                return "No exite el producto con la ID = 789";
+                return ex.Message;
             }
         }
         
@@ -168,8 +170,8 @@ namespace Lab.LINQ.Logic {
 
                 return $"{product.ProductID} {product.ProductName}";
 
-            } catch (InvalidOperationException) {
-                return "No existen registros en la tabla";
+            } catch (NoRegisterException ex) {
+                return ex.Message;
 
             } catch (Exception ex) { 
                 return ex.Message;

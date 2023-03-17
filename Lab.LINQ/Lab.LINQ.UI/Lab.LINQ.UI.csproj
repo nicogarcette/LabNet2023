@@ -63,6 +63,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Lab.LINQ.Common\Lab.LINQ.Common.csproj">
+      <Project>{7857c667-6a68-4a02-90b8-a4654bece210}</Project>
+      <Name>Lab.LINQ.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Lab.LINQ.Entities\Lab.LINQ.Entities.csproj">
       <Project>{8e6745aa-ec3d-4d98-9370-345685b553b3}</Project>
       <Name>Lab.LINQ.Entities</Name>

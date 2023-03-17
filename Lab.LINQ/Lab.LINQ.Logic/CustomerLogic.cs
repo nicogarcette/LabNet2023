@@ -1,4 +1,5 @@
-﻿using Lab.LINQ.Entities;
+﻿using Lab.LINQ.Common;
+using Lab.LINQ.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace Lab.LINQ.Logic {
 
             var customer = _context.Customers.FirstOrDefault();
 
-            if (customer == null) throw new ArgumentNullException();
+            if (customer == null) throw new NoRegisterException();
 
             return customer;
         }

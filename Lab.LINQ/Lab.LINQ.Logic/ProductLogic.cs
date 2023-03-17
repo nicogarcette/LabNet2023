@@ -1,4 +1,5 @@
 ﻿using Lab.LINQ.Entities;
+using Lab.LINQ.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace Lab.LINQ.Logic {
         public Products SpecificID() {
 
             var product = _context.Products.Where(p => p.ProductID == 789).FirstOrDefault();
-            if (product == null) throw new ArgumentNullException();
+            if (product == null) throw new NoRegisterException(); 
 
             return product;
         }
@@ -73,7 +74,7 @@ namespace Lab.LINQ.Logic {
                     select p
                    ).FirstOrDefault();
 
-            if (product == null) throw new ArgumentNullException();
+            if (product == null) throw new NoRegisterException();
 
             return product;
         }
