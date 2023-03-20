@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LabNet2023 - Inicio</title>
+    <link rel="icon" type="image/png" href="./img/icon.png">
+    <link rel="stylesheet" href="./css/style.css"> 
+</head>
+<body>
+    <header>
+        <h1 class="icon">Lab <span class="color">Net</span>  2023</h1>
+        <button id="refresh" class="btn header_btn"> Reiniciar</button>
+    </header>
+    <main>
+        <h1 class="title">¿Cual sera el Número?</h1>
+
+        <div class="container-juego">
+            
+            <div>
+                <img id="img" class="img" src="./img/pensando.jpg" alt="Homero pensando">
+            </div>
+
+            <form id="form" class="form" action="">
+                <h2> ingrese numero del 1 al 20</h2>
+                <input id="InputPlayer" type="number" name=""  placeholder="Ingrese numero">
+                <i id="alert" class="alert hiden">no ingreso nada!</i>
+                <button id="btnTry" type="submit" class="btn">Intentar</button>
+            </form>
+
+            <div class="score">
+                <p class="color"> Pista: <span id="track"></span></p> 
+                <p id="Score">Score: 20</p>
+                <p id="HighScore">HighScore:0</p>
+            </div>
+
+        </div>
+        <div id="winner" class="container-win hiden">
+            <img class="img" src="./img/homero-baila.gif" alt=" homero baila">
+            <img class="img" src="./img/messi-dancing.gif" alt="messi baila">
+            <img class="img" src="./img/spiderDance.gif" alt="spider dance">
+        </div>
+    </main>
+    <footer>
+        <a class="link" href="https://github.com/nicogarcette/LabNet2023.git" target="_blank">© Nicolas garcette</a>
+    </footer>   
+    <script src="./js/index.js"></script>
+</body>
+</html>
