@@ -8,8 +8,7 @@
     <tr>
         <td>Id</td>
         <td>Nombre</td>
-        <td>Eliminar</td>
-        <td>Editar</td>
+        <td>Acciones</td>
     </tr>
     @foreach (var item in Model) {
 
@@ -17,13 +16,10 @@
             <td>@item.Id</td>
             <td>@item.Name</td>
             <td>
-                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id })
+                @Html.ActionLink("Eliminar", "Eliminar", new { id = item.Id }, new { onclick = "return confirm('seguro?')", @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Editar", "UpdateInsert", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
             </td>
-            <td>
-                @Html.ActionLink("Editar", "UpdateInsert", new { id = item.Id })
-            </td>
-
         </tr>
     }
 </table>
-<p>@Html.ActionLink("Agregar Empleado", "UpdateInsert", new { id = 0 })</p>
+<p>@Html.ActionLink("Agregar Categoria", "UpdateInsert", new { id = 0 }, new { @class = "btn btn-primary" })</p>

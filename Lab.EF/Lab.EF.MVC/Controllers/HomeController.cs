@@ -16,12 +16,6 @@ namespace Lab.EF.MVC.Controllers {
             return View();
         }
 
-        public ActionResult Contact() {
-            ViewBag.Message = "Pestania contacto";
-
-            return View();
-        }
-
         public ActionResult Employee() {
             ViewBag.Message = "Soy employee";
 

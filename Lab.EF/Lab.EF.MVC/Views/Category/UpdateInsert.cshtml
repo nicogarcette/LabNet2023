@@ -3,8 +3,6 @@
     ViewBag.Title = "UpdateInsert";
 }
 
-<h2>UpdateInsert</h2>
-
 @{ string value = Model == null ? "Crear" : "Editar";}
 
 @using (Html.BeginForm()) {
@@ -24,7 +22,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value=@value class="btn btn-default" />
+                <input type="submit" value=@value class="btn btn-primary" />
             </div>
         </div>
     </div>
