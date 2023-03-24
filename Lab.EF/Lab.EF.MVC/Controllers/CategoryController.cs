@@ -12,7 +12,6 @@ namespace Lab.EF.MVC.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: Category
         public ActionResult Index()
         {
             CategoryLogic categoryLogic = new CategoryLogic();

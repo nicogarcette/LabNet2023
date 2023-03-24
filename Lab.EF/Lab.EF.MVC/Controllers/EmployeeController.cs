@@ -14,7 +14,6 @@ namespace Lab.EF.MVC.Controllers
 {
     public class EmployeeController : Controller
     {
-        // GET: Employee
         public ActionResult Index()
         {
             EmployeeLogic employeeLogic = new EmployeeLogic();
@@ -70,7 +69,7 @@ namespace Lab.EF.MVC.Controllers
 
             if (!ModelState.IsValid) {
                
-                return View(e);//chequea los requerimientos del modelo.
+                return View(e);
             }
 
             EmployeeLogic employeeLogic = new EmployeeLogic();
@@ -85,10 +84,6 @@ namespace Lab.EF.MVC.Controllers
                 return RedirectToAction("Index", "Error", new { message = ex.Message+ ex.InnerException+ ex.GetType() });
             }
 
-            //Validation failed for one or more entities.
-            //See 'EntityValidationErrors' property for more details.System.Data.Entity.Validation.DbEntityValidationException
-
-            //19.22
             return RedirectToAction("Index");
         }
     }
