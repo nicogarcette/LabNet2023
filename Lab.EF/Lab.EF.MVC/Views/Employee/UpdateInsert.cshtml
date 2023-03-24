@@ -1,0 +1,43 @@
+﻿@model Lab.EF.MVC.Models.EmployeeViewModel
+@{
+    ViewBag.Title = "UpdateInsert";
+}
+
+@{ string value = Model == null ? "Crear" : "Editar";}
+
+@using (Html.BeginForm()) {
+
+    <div class="form-horizontal">
+        <h2> @value Empleados</h2>
+        <hr />
+        @Html.HiddenFor(m => m.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName,"Nombre", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName,"Apellido", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value=@value class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+}

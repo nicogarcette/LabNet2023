@@ -1,10 +1,12 @@
-﻿using Lab.EF.Data;
+﻿using Lab.EF.Common;
+using Lab.EF.Data;
 using Lab.EF.Entities;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,6 +16,15 @@ namespace Lab.EF.Logic {
         public List<Employees> GetAll() {
 
             return _northwindContext.Employees.ToList();
+        }
+
+        public Employees GetOne(int id) {
+
+            var employee = _northwindContext.Employees.FirstOrDefault(e => e.EmployeeID == id);
+
+            if (employee == null) throw new NoRegisterException();
+
+            return employee;
         }
 
         public void Insert(Employees obj) {
@@ -34,7 +45,7 @@ namespace Lab.EF.Logic {
 
                 Employees employeeDelete = _northwindContext.Employees.Find(id);
 
-                if (employeeDelete == null) throw new ArgumentNullException("ID invalida");
+                if (employeeDelete == null) throw new NoRegisterException();
 
                 _northwindContext.Employees.Remove(employeeDelete);
                 _northwindContext.SaveChanges();
@@ -50,7 +61,7 @@ namespace Lab.EF.Logic {
             try {
 
                 var employeeUpdate = _northwindContext.Employees.Find(modified.EmployeeID);
-                if (employeeUpdate == null) throw new ArgumentNullException("ID invalida");
+                if (employeeUpdate == null) throw new NoRegisterException();
 
                 employeeUpdate.FirstName = modified.FirstName;
                 employeeUpdate.LastName = modified.LastName;

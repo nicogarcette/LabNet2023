@@ -1,4 +1,5 @@
-﻿using Lab.EF.Data;
+﻿using Lab.EF.Common;
+using Lab.EF.Data;
 using Lab.EF.Entities;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,15 @@ namespace Lab.EF.Logic {
 
             return _northwindContext.Categories.ToList();
         }
-      
+        public Categories GetOne(int id) {
+
+            var category = _northwindContext.Categories.FirstOrDefault(e => e.CategoryID == id);
+
+            if (category == null) throw new NoRegisterException();
+
+            return category;
+        }
+
         public void Insert(Categories obj) {
             try {
                 _northwindContext.Categories.Add(obj);
@@ -42,8 +51,8 @@ namespace Lab.EF.Logic {
 
                 var categoryDelete = _northwindContext.Categories.Find(id);
 
-                if (categoryDelete == null) throw new ArgumentNullException("ID invalida");
-           
+                if (categoryDelete == null) throw new NoRegisterException();
+
                 _northwindContext.Categories.Remove(categoryDelete);
                 _northwindContext.SaveChanges();
 
@@ -59,7 +68,7 @@ namespace Lab.EF.Logic {
 
                 var categoryUpdate = _northwindContext.Categories.Find(modified.CategoryID);
 
-                if (categoryUpdate == null) throw new ArgumentNullException("ID invalida");
+                if (categoryUpdate == null) throw new NoRegisterException();
 
                 categoryUpdate.CategoryName = modified.CategoryName;
 
