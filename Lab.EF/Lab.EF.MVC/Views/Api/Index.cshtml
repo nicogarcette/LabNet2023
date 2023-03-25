@@ -1,0 +1,12 @@
+﻿@model Lab.EF.MVC.Models.DogModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Perros Api</h2>
+<div style="display:flex; flex-direction:column">
+    <img src="@Model.Message" alt="Alternate Text" />
+    @Html.ActionLink("Randon","Index",null, new { @class = "btn btn-success" })
+</div>
+
+
