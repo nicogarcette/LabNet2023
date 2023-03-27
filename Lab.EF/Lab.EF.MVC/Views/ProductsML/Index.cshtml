@@ -10,24 +10,33 @@
     <div style="display:flex; justify-content:center; align-items:center" class="form-group mb-2">
 
         <div class="">
-            <input style="font-size :20px" type="text" name="path" class="form-control-plaintext"  placeholder="Buscar por..."/>
+            <input style="font-size :20px" type="text" name="path" class="form_input form-control-plaintext" placeholder="Buscar por..." />
         </div>
-         <input type="submit" value="Buscar" class="btn btn-primary" />
-     
+        <input type="submit" value="Buscar" class="btn-lab" />
+
     </div>
 }
 
-<div style="display:flex; justify-content:space-around; margin:2rem 1rem">
+@if (Model.Count == 0) {
 
-    @foreach (var p in Model) {
+    <div class="noProduct">
+        <p>Sin productos!</p>
+    </div>
+} else { 
 
-        <div style="max-width: 300px; max-height: 300px; background-color:azure; border-radius:10px">
-            <h3>@p.Title</h3>
-            <img src="@p.Thumbnail" style="width: 100%; height: auto;">
-            <h3>$@p.Price</h3> 
-        </div>
-    }
-</div>
+    <div class="card-container" >
+
+        @foreach (var p in Model) {
+
+            <div class="card col-lg-4 col-12">
+                <h3 class="size">@p.Title</h3>
+                <img class="card-img" src="@p.Thumbnail">
+                <h2>$@p.Price</h2>
+            </div>
+        }
+    </div>
+}
+
 
 
 

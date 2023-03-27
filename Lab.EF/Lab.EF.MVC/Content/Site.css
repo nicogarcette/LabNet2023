@@ -28,3 +28,90 @@ textarea {
     background-color: #777;
     border-color: #fff
 }
+/*style ML*/
+.card-container {
+    display:flex; 
+    justify-content:space-around; 
+    margin:2rem 1rem;
+}
+
+.card {
+    max-width: 300px;
+    background-color: #EEEEEE;
+    border-radius: 20px;
+    padding: 1rem 0;
+    transition: all .5s ease;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem 2.5rem;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    cursor: pointer;
+}
+.card-img {
+    width: 100%; 
+    height: auto;
+}
+.size {
+    padding: 0 1rem;
+}
+
+.form_input {
+    border-radius: 10px;
+    width: 100%;
+    border: 2px solid #3E54AC;
+    line-height: 45px;
+    padding: 0 40px 0 10px;
+    transition: .3s ease all;
+}
+
+.btn-lab {
+    padding: 10px 2rem;
+    margin: 1rem;
+    border: none;
+    background-color: #3E54AC;
+    color: #DDDDDD;
+    font-size: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-lab:hover {
+    transform: translate(0.25rem);
+    box-shadow: 0.25rem 0.25rem var(black);
+    background-color: #3E54AC;
+}
+
+.noProduct {
+    display:flex;
+    justify-content: center;
+    margin:10rem 0;
+}
+
+.noProduct p{
+    font-size: 30px;
+}
+
+@media screen and (max-width:768px){
+    .card-container {
+        justify-content: space-around;
+        flex-direction:column;
+    }
+}
+/*DOG*/
+.card-dog {
+    display:flex;
+    gap:2rem;
+    width:50%;
+}
+.card-dog img {
+    max-height: 600px;
+}
+.card-dog a {
+    height : 3.5rem;
+}
