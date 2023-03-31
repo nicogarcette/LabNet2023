@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Mvc;
 using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
 using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
@@ -14,6 +15,7 @@ using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
 namespace Lab.EF.WebApi.Controllers
 {
+    [EnableCors("*","*","*")]
     public class EmployeeController : ApiController {
 
         private readonly EmployeeLogic employeeLogic = new EmployeeLogic();

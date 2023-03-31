@@ -1,0 +1,68 @@
+<!-- 
+<table class="" style="width: 50%;">
+  <thead>
+    <tr class="">
+      <th >ID</th>
+      <th >First Name</th>
+      <th >Last Name</th>
+      <th >Delete</th>
+      <th >Update</th>
+    </tr>
+  </thead>
+  <tbody class="" >
+    <tr *ngFor="let e of employeesList" >
+      <td>{{e.Id}}</td>
+      <td>{{e.Name}}</td>
+      <td>{{e.LastName}}</td>
+    </tr>
+</table> -->
+
+<!-- <div class="spinner-container" *ngIf="dataSource.loading$ | async">
+  <mat-spinner></mat-spinner>
+</div> -->
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef>Id</th>
+    <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="FirstName">
+    <th mat-header-cell *matHeaderCellDef>Nombre</th>
+    <td mat-cell *matCellDef="let element"> {{element.FirstName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="LastName">
+    <th mat-header-cell *matHeaderCellDef>Apellido</th>
+    <td mat-cell *matCellDef="let element"> {{element.LastName}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Acciones">
+    <th mat-header-cell *matHeaderCellDef>Acciones</th>
+    <mat-cell *matCellDef="let row;">
+
+      <button  mat-fab color="primary" aria-label="">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-fab color="primary" aria-label="" style="background-color:red">
+        <mat-icon>delete</mat-icon>
+      </button>
+
+
+			<!-- <a mat-icon-button>
+        <mat-icon>edit</mat-icon>        
+      </a>
+			<a mat-icon-button>
+        <mat-icon color="warn">delete</mat-icon>
+      </a> -->
+
+
+		</mat-cell>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

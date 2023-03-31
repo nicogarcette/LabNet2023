@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+}
+
+.mat-row:not(.mat-no-data-row):hover {
+  cursor: pointer;
+  background-color: #a4edfc;
+}
+
+.center{
+
+  text-align: center;
+}
