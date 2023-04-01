@@ -4,6 +4,14 @@ import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [],
@@ -12,7 +20,14 @@ import {MatTableModule} from '@angular/material/table';
     MatSliderModule,
     MatToolbarModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    MatButtonModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule
   ]
 })
 export class MaterialModule { }

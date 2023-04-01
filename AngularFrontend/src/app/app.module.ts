@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EmployeeModule } from './employee/employee.module';
 import { SharedModule } from './shared/shared.module';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +18,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     HttpClientModule,
     EmployeeModule,
-    SharedModule
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

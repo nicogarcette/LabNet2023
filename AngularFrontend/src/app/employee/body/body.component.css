@@ -1,13 +1,29 @@
 table {
-    width: 100%;
-}
+  width: 50%;
 
+}
+td{
+  width: 25%;
+}
 .mat-row:not(.mat-no-data-row):hover {
   cursor: pointer;
   background-color: #a4edfc;
 }
 
 .center{
-
   text-align: center;
+}
+.container{
+  display: flex;
+  justify-content: center;
+}
+
+.m5{
+  margin: 2rem;
+}
+.spiner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }

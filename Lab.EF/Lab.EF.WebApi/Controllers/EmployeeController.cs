@@ -1,4 +1,5 @@
-﻿using Lab.EF.Entities;
+﻿using Lab.EF.Common;
+using Lab.EF.Entities;
 using Lab.EF.Logic;
 using Lab.EF.MVC.Models;
 using System;
@@ -10,6 +11,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Mvc;
 using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
+using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
 using HttpPostAttribute = System.Web.Http.HttpPostAttribute;
 using HttpPutAttribute = System.Web.Http.HttpPutAttribute;
 
@@ -33,6 +35,23 @@ namespace Lab.EF.WebApi.Controllers
                 return Content(HttpStatusCode.NotFound, "Sin registros");
             
             return Ok(data);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetOne(int id) {
+            try {
+                Employees emp = employeeLogic.GetOne(id);
+                EmployeeViewModel employee = new EmployeeViewModel {
+                    Id = emp.EmployeeID,
+                    FirstName = emp.FirstName,
+                    LastName = emp.LastName
+                };
+                return Ok(employee);
+
+            } catch (Exception) {
+
+                return Content(HttpStatusCode.NotFound, "Sin registros");
+            }
         }
 
         // DELETE api/employee/{id}
