@@ -1,3 +1,14 @@
+# Lab Net 2023 - Practica 8 Angular
+
+## Install
+
+Para correr el proyecto
+
+```bash
+  npm Install
+  ng serve
+```
+
 # AngularFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
