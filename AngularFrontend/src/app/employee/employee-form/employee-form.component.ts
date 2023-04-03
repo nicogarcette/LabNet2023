@@ -14,19 +14,23 @@ export class EmployeeFormComponent implements OnInit {
 
   form: FormGroup;
   id: number;
+  action:string = 'Agregar';
 
   constructor(private fb: FormBuilder,private employeeService:EmployeesService,private snack: MatSnackBar,
     private route:ActivatedRoute) {
 
     this.form = this.fb.group({
-      FirstName:['',Validators.required],
-      LastName:['',Validators.required],
+      FirstName:['',[Validators.maxLength(15), Validators.required]],
+      LastName:['',[Validators.maxLength(15), Validators.required]]
     });
     this.id = Number(this.route.snapshot.paramMap.get('id'));
   }
 
   ngOnInit(): void {
-    this.id != 0 && this.getEmploye(this.id);
+    if (this.id != 0) {
+       this.getEmploye(this.id);
+       this.action = "Editar";
+    }
   }
   getEmploye(id:number){
     this.employeeService.getOne(id).subscribe(res=>{
@@ -36,6 +40,7 @@ export class EmployeeFormComponent implements OnInit {
       });
     })
   }
+
   addEmployee(){
     const emp: employee = { 
       Id:this.id,
@@ -48,14 +53,14 @@ export class EmployeeFormComponent implements OnInit {
 
   create(emp:employee){
     this.employeeService.createEmploye(emp).subscribe({
-      next:(res)=> this.alert(res.toString()),
-      error:(e) =>this.alert(e)
+      next:(res)=> this.alert(res),
+      error:(e) => this.alert(e.error.Message)
     })
   }
   update(emp:employee){
     this.employeeService.updateEmploye(emp).subscribe({
-      next:(res)=> this.alert(res.toString()),
-      error:(e) =>this.alert(e)
+      next:(res)=> this.alert(res),
+      error:(e) =>this.alert(e.error.Message)
     })
   }
   alert(msj:string){

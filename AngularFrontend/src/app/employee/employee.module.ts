@@ -5,12 +5,16 @@ import { SharedModule } from '../shared/shared.module';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
+import { EmployeeViewComponent } from './employee-view/employee-view.component';
+import { DialogDeleteComponent } from './dialog-delete/dialog-delete.component';
 
 @NgModule({
   declarations: [
     BodyComponent,
     EmployeeFormComponent,
-    EmployeeFormComponent
+    EmployeeFormComponent,
+    EmployeeViewComponent,
+    DialogDeleteComponent
   ],
   imports: [
     CommonModule,

@@ -3,6 +3,8 @@ import { employee } from 'src/app/models/employee';
 import { MatTableDataSource, } from '@angular/material/table';
 import { EmployeesService } from '../services/employees.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {MatDialog} from '@angular/material/dialog';
+import { DialogDeleteComponent } from '../dialog-delete/dialog-delete.component';
 
 @Component({
   selector: 'app-body',
@@ -16,7 +18,7 @@ export class BodyComponent implements OnInit {
   displayedColumns: string[] = ['Id', 'FirstName', 'LastName','Acciones'];
   public loading : boolean;
 
-  constructor(private employeeService : EmployeesService,private snack: MatSnackBar) { 
+  constructor(private employeeService : EmployeesService,private snack: MatSnackBar,public dialog: MatDialog) { 
     this.loading = true;
   }
 
@@ -45,21 +47,10 @@ export class BodyComponent implements OnInit {
         this.alert(res);
         this.getEmployees();
       },
-      error:(e) =>console.error(e)
+      error:(e) =>this.alert(e.error.Message)
     })
   }
-  update(){
-    const emp: employee = { 
-      Id:0,
-      FirstName:'ángula',
-      LastName: 'sii'
-    }
-    this.employeeService.updateEmploye(emp).subscribe({
-      next:(res)=> this.alert(res.toString()),
-      error:(e) => this.alert(e)
-    })
-  }
-
+ 
   simulateLoading(){
     this.loading = true;
     setTimeout(()=>{
@@ -69,9 +60,18 @@ export class BodyComponent implements OnInit {
 
   alert(msj:string){
     this.snack.open(msj,'',{
-      duration:4000,
+      duration:3000,
       horizontalPosition:'right',
       verticalPosition:'top'
     });
+  }
+
+  openDialog(id:number): void {
+    const dialogoref = this.dialog.open(DialogDeleteComponent, {
+      width: '350px'
+    });
+    dialogoref.afterClosed().subscribe(res=>{
+      res && this.delete(id)
+    })
   }
 }
