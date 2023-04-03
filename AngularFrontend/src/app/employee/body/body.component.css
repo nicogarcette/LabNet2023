@@ -1,8 +1,12 @@
 table {
   width: 50%;
+  margin-bottom: 10rem;
 }
 td{
   width: 25%;
+}
+.mat-row:not(.mat-no-data-row){
+  transition: all 0.2s ease;
 }
 .mat-row:not(.mat-no-data-row):hover {
   cursor: pointer;
@@ -15,9 +19,14 @@ td{
 .container{
   display: flex;
   justify-content: center;
+
 }
-.m5{
+.btn{
   margin: 2rem;
+  transition: all 0.3s ease;
+}
+.btn:hover{
+  transform: scale(1.05);
 }
 .spiner{
   display: flex;
@@ -30,4 +39,4 @@ td{
   width: 100%;
   text-align: center;
   margin-bottom: 3rem;
-}
+} 

@@ -28,13 +28,12 @@ export class BodyComponent implements OnInit {
   }
 
   getEmployees(){
-    this.employeeService.getAll()
-    .subscribe({
+    this.employeeService.getAll().subscribe({
       next:(data)=>{
         this.employeesList = data;
         this.dataSource = new MatTableDataSource(this.employeesList);
       },
-      error:(e)=>{
+      error:()=>{
         this.alert('Hay un error al obtener la lista');
         this.loading = false;
       }

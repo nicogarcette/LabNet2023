@@ -26,7 +26,7 @@
   
     <ng-container matColumnDef="Acciones">
       <th mat-header-cell *matHeaderCellDef >
-        <button class="m5" mat-raised-button color="primary" routerLink="/AgregarEmpleado">Nuevo empleado</button>
+        <button class="btn" mat-raised-button color="primary" [disabled]="employeesList.length==0" routerLink="/AgregarEmpleado">Nuevo empleado</button>
       </th>
       <td mat-cell *matCellDef="let element" style="text-align: right; ">
         <a mat-icon-button  matTooltip="Ver empleado" routerLink="/VerEmpleado/{{element.Id}}">

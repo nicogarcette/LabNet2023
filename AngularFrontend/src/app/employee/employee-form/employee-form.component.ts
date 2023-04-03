@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { employee } from 'src/app/models/employee';
 import { EmployeesService } from '../services/employees.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Router } from '@angular/router';
 
 @Component({
   selector: 'app-employee-form',
@@ -17,13 +17,14 @@ export class EmployeeFormComponent implements OnInit {
   action:string = 'Agregar';
 
   constructor(private fb: FormBuilder,private employeeService:EmployeesService,private snack: MatSnackBar,
-    private route:ActivatedRoute) {
+  private router: Router,private route:ActivatedRoute ) {
 
     this.form = this.fb.group({
-      FirstName:['',[Validators.maxLength(15), Validators.required]],
-      LastName:['',[Validators.maxLength(15), Validators.required]]
+      FirstName:['',[Validators.maxLength(15), Validators.required,Validators.pattern('[a-zA-Z]*')]],
+      LastName: ['',[Validators.maxLength(15), Validators.required,Validators.pattern('[a-zA-Z]*')]]
     });
     this.id = Number(this.route.snapshot.paramMap.get('id'));
+   
   }
 
   ngOnInit(): void {
@@ -32,6 +33,7 @@ export class EmployeeFormComponent implements OnInit {
        this.action = "Editar";
     }
   }
+
   getEmploye(id:number){
     this.employeeService.getOne(id).subscribe(res=>{
       this.form.setValue({
@@ -47,22 +49,29 @@ export class EmployeeFormComponent implements OnInit {
       FirstName:this.form.value.FirstName,
       LastName: this.form.value.LastName
     }
-
     this.id == 0 ? this.create(emp) : this.update(emp);
   }
 
   create(emp:employee){
     this.employeeService.createEmploye(emp).subscribe({
-      next:(res)=> this.alert(res),
+      next:(res)=> {
+        this.alert(res),
+        this.router.navigate(['/Empleados'])
+      },
       error:(e) => this.alert(e.error.Message)
     })
   }
+  
   update(emp:employee){
     this.employeeService.updateEmploye(emp).subscribe({
-      next:(res)=> this.alert(res),
+      next:(res)=> {
+        this.alert(res),
+        this.router.navigate(['/Empleados'])
+      },
       error:(e) =>this.alert(e.error.Message)
     })
   }
+  
   alert(msj:string){
     this.snack.open(msj,'',{
       duration:4000,
@@ -70,5 +79,4 @@ export class EmployeeFormComponent implements OnInit {
       verticalPosition:'top'
     });
   }
-
 }
